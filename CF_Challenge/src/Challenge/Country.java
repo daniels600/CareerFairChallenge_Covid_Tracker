@@ -1,4 +1,4 @@
-package Challenge;
+package Career_Fair_Challenge;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -24,12 +24,6 @@ public class Country {
         this.population = population;
         this.year = year;
         this.country_code = country_code;
-    }
-
-    public Country(String country_name, long population, int year) {
-        this.country_name = country_name;
-        this.population = population;
-        this.year = year;
     }
 
     public String getCountry_name() {
@@ -68,13 +62,15 @@ public class Country {
 
     public void readPopulationData(String filename){
         HashMap<String, Country> myMap = new HashMap<>();
+        Inter it = new Inter();
+        Covid covid = new Covid();
 
         try{
             /**
-            Scanner sc = new Scanner(System.in);
-            System.out.println("Enter the file name: ");
-            System.out.flush();
-            String filename = sc.nextLine();*/
+             Scanner sc = new Scanner(System.in);
+             System.out.println("Enter the file name: ");
+             System.out.flush();
+             String filename = sc.nextLine();*/
 
             File file = new File(filename);
 
@@ -98,17 +94,28 @@ public class Country {
                     this.setPopulation((Long.parseLong(Array[2])));
                     this.setYear(Integer.parseInt(Array[3]));
 
-                    myMap.put(this.getCountry_code(), new Country(this.getCountry_name(), this.getPopulation(), this.getYear(),this.getCountry_code()));
-
+                    myMap.put(this.getCountry_name(), new Country(this.getCountry_name(), this.getPopulation(), this.getYear(),this.getCountry_code()));
 
                 }
             }
+
+            System.out.println(covid.hn());
+            //it.add_countries(myMap);
+            //it.find_highest_ratio(myMap);
+            //System.out.println(it.printh());
+            //System.out.println("the boy is" );
+            //System.out.println(it.getHighest_country_infection());
+
+            /**
             for(Map.Entry m: myMap.entrySet()){
-                System.out.println("Key: " + m.getKey() + " " + "Value "+ m.getValue());
+
+                if(m.getKey().equals(name)){
+                    System.out.println("Hello");
+                    System.out.println("Key: " + m.getKey() + " " + "Value " + m.getValue());
+                }
+
             }
-
-            System.out.println(myMap.size());
-
+    */
             br.close();
 
         } catch (IOException e) {
@@ -132,7 +139,7 @@ public class Country {
 
     @Override
     public int hashCode() {
-       return Objects.hash(country_name, population, year, country_code);
+        return Objects.hash(country_name, population, year, country_code);
     }
 
     @Override
@@ -144,4 +151,6 @@ public class Country {
                 ", country_code='" + country_code + '\'' +
                 '}';
     }
+
+
 }
